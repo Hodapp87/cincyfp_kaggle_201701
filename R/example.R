@@ -18,7 +18,7 @@ soln <- read.table("../data/winequality-solution-input.csv", sep=",",
 
 soln_predict <- predict(tree, soln)
 
-## Format the predictions as a submission:
+## Format the predictions as a submission, and write a CSV:
 submission <- data.frame(id = soln$id,
                          quality = soln_predict)
 write.table(submission, sep=",", quote=FALSE, row.names = FALSE,
