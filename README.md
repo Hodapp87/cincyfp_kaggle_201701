@@ -9,12 +9,13 @@ download the data files.
 
 See [R/example.R](R/example.R).  This uses
 the [rpart](https://cran.r-project.org/web/packages/rpart/index.html)
-library to fit a decision tree to the data.
+library to fit a decision tree to the data, and also uses R's built-in
+linear models for regression.
 
 For those not familiar with R, you'll probably need to first run:
 
 ```r
-install.packages("rpart")
+install.packages(c("rpart", "dplyr"))
 ```
 
 ## Python

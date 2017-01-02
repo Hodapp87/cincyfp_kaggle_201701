@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 
-import numpy
 import pandas
 import sklearn.tree
 import sklearn.cross_validation
@@ -14,8 +13,10 @@ data = pandas.read_csv("../data/winequality-data.csv")
 X_train, X_test, y_train, y_test = sklearn.cross_validation.train_test_split(
     data.drop(["id", "quality"], axis=1), # input attributes
     data["quality"], # outputs
-    test_size = 0.33,
+    test_size = 0.33, # 1/3 of data is for testing
     random_state = 12345)
+
+# (See also: http://scikit-learn.org/stable/modules/cross_validation.html)
 
 # Fit a decision tree on all training data:
 tree = sklearn.tree.DecisionTreeRegressor()
