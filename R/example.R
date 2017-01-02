@@ -5,7 +5,7 @@
 library(rpart)
 
 ## Read in CSV data, and drop "id" column since it's not needed:
-train <- read.table("winequality-data.csv", sep=",", header=TRUE)
+train <- read.table("../data/winequality-data.csv", sep=",", header=TRUE)
 train$id <- NULL
 
 ## Fit a decision tree, modeling the 'quality' column from every other
@@ -13,7 +13,7 @@ train$id <- NULL
 tree <- rpart(quality ~ ., data = train)
 
 ## Read in "solution" input:
-soln <- read.table("winequality-solution-input.csv", sep=",",
+soln <- read.table("../data/winequality-solution-input.csv", sep=",",
                    header=TRUE)
 
 soln_predict <- predict(tree, soln)
