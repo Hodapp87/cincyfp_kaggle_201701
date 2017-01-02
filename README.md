@@ -28,5 +28,7 @@ packages.
 
 ## Clojure 
 
-See Clojure/wine-quality project to see an example using a Weka model.
-You will need to install Weka if you want to interactively explore the different models.
+See [Clojure/wine-quality](Clojure/wine-quality) project to see an
+example using a Weka model.  You will need to
+install [Weka](http://www.cs.waikato.ac.nz/ml/weka/) if you want to
+interactively explore the different models.
