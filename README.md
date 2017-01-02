@@ -7,7 +7,7 @@ download the data files.
 
 ## R
 
-See [R/example.R](R/example.R) directory.  This uses
+See [R/example.R](R/example.R).  This uses
 the [rpart](https://cran.r-project.org/web/packages/rpart/index.html)
 library to fit a decision tree to the data.
 
