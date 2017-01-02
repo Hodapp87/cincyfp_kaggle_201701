@@ -19,8 +19,14 @@ install.packages(c("rpart", "dplyr"))
 ```
 
 ## Python
-
+ 
 See [python/example.py](python/example.py).  This uses two separate
 models from [scikit-learn](http://scikit-learn.org/) (decision trees
 and linear regression). You'll need the `sklearn` and `pandas`
 packages.
+
+
+## Clojure 
+
+See Clojure/wine-quality project to see an example using a Weka model.
+You will need to install Weka if you want to interactively explore the different models.
