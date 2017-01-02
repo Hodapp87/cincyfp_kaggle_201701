@@ -19,6 +19,7 @@ install.packages("rpart")
 
 ## Python
 
-See [python/example.py](python/example.py).  This
-uses [scikit-learn](http://scikit-learn.org/)'s decision trees; you'll
-need the `sklearn` and `pandas` packages.
+See [python/example.py](python/example.py).  This uses two separate
+models from [scikit-learn](http://scikit-learn.org/) (decision trees
+and linear regression). You'll need the `sklearn` and `pandas`
+packages.
