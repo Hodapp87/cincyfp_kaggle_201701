@@ -7,7 +7,7 @@ download the data files.
 
 For the completely lost, consider going to
 [awesome-machine-learning](https://github.com/josephmisiti/awesome-machine-learning)
-and finding your favorite favorite language.
+and finding your favorite programming language.
 
 ## R
 
