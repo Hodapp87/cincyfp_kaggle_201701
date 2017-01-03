@@ -5,6 +5,10 @@ done at the CincyFP meeting on January 10th, 2016.
 See <https://inclass.kaggle.com/c/uci-wine-quality-dataset> to
 download the data files.
 
+For the completely lost, consider going to
+[awesome-machine-learning](https://github.com/josephmisiti/awesome-machine-learning)
+and finding your favorite favorite language.
+
 ## R
 
 See [R/example.R](R/example.R).  This uses
