@@ -17,6 +17,13 @@ test  <- slice(data, (split_idx+1):n())
 ## attribute:
 tree <- rpart(quality ~ ., data = train)
 
+## Print some statistics, and plot the tree:
+summary(tree)
+png("./winequality-tree.png")
+plot(tree)
+text(tree)
+dev.off()
+
 ## Get training & testing error:
 mae <- function(input, model) {
     mean(abs(predict(model, input) - input$quality))
