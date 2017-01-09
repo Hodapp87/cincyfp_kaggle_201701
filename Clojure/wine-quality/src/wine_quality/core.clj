@@ -80,7 +80,7 @@
 (defn predict [{:keys [evaluator classifier data]} vals]
   (.evaluateModelOnce evaluator classifier (gen-instance data vals)))
 
-(defn to-kaggle-results []
+(defn to-kaggle-results [model]
   (with-open [out-file (io/writer "kaggle-results.csv")]
     (csv/write-csv out-file
                     (into [["id" "quality"]]
