@@ -36,3 +36,6 @@ See [Clojure/wine-quality](Clojure/wine-quality) project to see an
 example using a Weka model.  You will need to
 install [Weka](http://www.cs.waikato.ac.nz/ml/weka/) if you want to
 interactively explore the different models.
+
+There is also a starter solution for the [Cortex](https://github.com/thinktopic/cortex).
+This is very experimental - see the notes from the google group
