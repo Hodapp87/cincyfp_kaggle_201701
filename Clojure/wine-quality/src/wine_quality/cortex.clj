@@ -16,7 +16,7 @@
 ;;; An attempt at using Cortex for the wine quality data
 ;;; https://github.com/thinktopic/cortex
 
-;; Notes from Googe Group
+;; Notes from Google Group
 
 ;; Just a couple of quick notes. This is the type of problem that is typically a better fit for a decision tree or regression approach, or an ensemble thereof like adaboost/gradient boosting or random forests. That said, a neural network with no hidden layers and a softmax output is essentially equivalent to logistic regression, or basic regression with a linear output, and could be a good starter example.
 
