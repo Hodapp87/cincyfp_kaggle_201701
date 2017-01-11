@@ -72,10 +72,7 @@
     (doall (map-indexed (fn [idx x] (.setValue inst idx (Double. x))) values))
     (doto inst
       (.setValue 11 (Instance/missingValue))
-      (.setDataset dataset))))
-
-(def test-data
-  (mapv #(take 11 %) (rest raw-data)))
+       (.setDataset dataset))))
 
 (defn predict [{:keys [evaluator classifier data]} vals]
   (.evaluateModelOnce evaluator classifier (gen-instance data vals)))
@@ -98,5 +95,8 @@
   (stats model)
   ;; next lets run the data and get the predicted results for the Kaggle
 
-  (to-kaggle-results)
+  (to-kaggle-results model)
+
+
+  ;;; REPTree - 0.54221
   )
