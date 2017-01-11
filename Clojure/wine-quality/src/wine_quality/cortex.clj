@@ -102,7 +102,7 @@
 (defn test-wine
   "Gets the results of a trained network on the test data"
   [context trained-network batch-size]
-  (let [dataset (ds/create-in-memory-dataset {:data {:data TEST-WINE-DATA
+  (let [dataset (ds/create-in-memory-dataset {:data {:data (mapv drop-last TEST-WINE-DATA)
                                                      :shape 11}
                                               :labels {:data (into [] (repeat (count TEST-WINE-DATA) 0))
                                                        :shape 1}}
