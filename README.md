@@ -1,7 +1,7 @@
 # cincyfp_kaggle_201701
 
 This contains some example implementations for the Kaggle competition
-done at the CincyFP meeting on January 10th, 2016.
+done at the CincyFP meeting on January 10th, 2017.
 See <https://inclass.kaggle.com/c/uci-wine-quality-dataset> to
 download the data files.
 
