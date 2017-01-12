@@ -77,7 +77,7 @@
 (defn train-wine
   "This trains the network on the wine data and results the Mean squared loss"
   [context]
-  (let [n-epochs 50
+  (let [n-epochs 5000
         dataset (ds/create-in-memory-dataset {:data {:data WINE-DATA
                                                      :shape 11}
                                               :labels {:data WINE-LABELS
@@ -92,28 +92,27 @@
                                                     :stream :labels
                                                     :loss loss-fn)]
         results (train-and-get-results context [(layers/input 11 1 1 :id :input)
+                                                (layers/linear 10 :id :hidden)
                                                 (layers/linear 1 :id :output)]
                                        input-bindings output-bindings 100 dataset
                                        (opt/adadelta) true nil n-epochs identity)
-        mse (loss/average-loss loss-fn (:infer-results results) WINE-LABELS)]
+        mse (loss/average-loss loss-fn (:infer-results results) WINE-LABELS)
+        output-id (ffirst output-bindings)]
     (println "The MSE for the wine training is " mse)
+    (def x (-> (execute/infer-columns context (:network results) dataset input-bindings output-bindings
+                                                  :batch-size (count WINE-DATA))
+                           (get output-id)))
     (assoc results :mse mse)))
+
 
 (defn test-wine
   "Gets the results of a trained network on the test data"
-  [context trained-network batch-size]
-  (let [dataset (ds/create-in-memory-dataset {:data {:data (mapv drop-last TEST-WINE-DATA)
-                                                     :shape 11}
-                                              :labels {:data (into [] (repeat (count TEST-WINE-DATA) 0))
-                                                       :shape 1}}
-                                             (ds/create-index-sets (count TEST-WINE-DATA)))
-        input-bindings [(traverse/->input-binding :input :data)]
-        output-bindings [(traverse/->output-binding :output
-                                                    :stream :labels)]
-        output-id (ffirst output-bindings)
-        infer-results  (-> (execute/infer-columns context trained-network dataset input-bindings output-bindings
-                                                  :batch-size batch-size)
-                           (get output-id))]
+  [context trained-network]
+  (let [observations (mapv drop-last TEST-WINE-DATA)
+        dataset (ds/->InMemoryDataset {:data {:data observations
+                                              :shape 11}}
+                                      (vec (range (count observations))))
+        infer-results  (execute/infer-columns context trained-network dataset [] [] :batch-size (count observations))]
     infer-results))
 
 (defn to-kaggle-results
@@ -122,13 +121,17 @@
   (with-open [out-file (io/writer "cortex-kaggle-results.csv")]
     (csv/write-csv out-file
                     (into [["id" "quality"]]
-                          (mapv (fn [idx r] [(int  idx) (double r)]) (mapv last TEST-WINE-DATA) (mapv first results))))))
+                          (mapv (fn [idx r]
+                                  [(int  idx) (double r)]) (mapv last TEST-WINE-DATA) (mapv first results))))))
 
 (comment
 
   (def trained-network (train-wine (create-context)))
 
-  (def infer-results (test-wine (create-context) (:network trained-network) 100))
+  (def infer-results
+    (test-wine (create-context) (:network trained-network)))
 
-  (to-kaggle-results infer-results)
+  (to-kaggle-results (:output infer-results))
+
+  ;;; score 0.59625
 )
