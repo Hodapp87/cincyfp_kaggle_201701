@@ -98,10 +98,7 @@
                                        (opt/adadelta) true nil n-epochs identity)
         mse (loss/average-loss loss-fn (:infer-results results) WINE-LABELS)
         output-id (ffirst output-bindings)]
-    (println "The MSE for the wine training is " mse)
-    (def x (-> (execute/infer-columns context (:network results) dataset input-bindings output-bindings
-                                                  :batch-size (count WINE-DATA))
-                           (get output-id)))
+    (println "The MSE! for the wine training is " mse)
     (assoc results :mse mse)))
 
 
